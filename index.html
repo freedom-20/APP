@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>RoleCard Studio</title>
-    <link rel="icon" href="https://i.postimg.cc/g2zCjjg3/1771565953261.jpg">
     <script src="https://cdn.tailwindcss.com"></script>
     
     <script type="importmap">
@@ -18,13 +17,21 @@
     }
     </script>
 
+    <script>
+        window.onerror = function(msg, url, line) {
+            alert("发现错误: " + msg + "\n文件: " + url);
+        };
+    </script>
+
     <script type="module" crossorigin src="assets/index-BdtMaCkT.js"></script>
-    
     <link rel="manifest" href="manifest.webmanifest">
 </head>
 <body>
     <div id="root">
-        <div style="padding: 20px; text-align: center;">应用正在加载...</div>
+        <div style="padding: 50px; text-align: center; color: #666;">
+            <p>应用正在加载...</p>
+            <p style="font-size: 12px; margin-top: 10px;">如果长时间没反应，请检查 assets 文件夹文件是否完整</p>
+        </div>
     </div>
 </body>
 </html>
