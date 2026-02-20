@@ -6,17 +6,28 @@
     <title>RoleCard Studio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@19.0.0",
-    "react-dom": "https://esm.sh/react-dom@19.0.0",
-    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
-    "react/jsx-runtime": "https://esm.sh/react@19.0.0/jsx-runtime"
-  }
-}
-</script>
+    <script>
+        // 创建一个假的环境变量对象
+        window.process = { 
+            env: { 
+                VITE_API_KEY: "fake_key_for_loading",
+                NEXT_PUBLIC_GEMINI_API_KEY: "fake_key_for_loading"
+            } 
+        };
+        // 伪装全局变量
+        window.apiKey = "fake_key_for_loading";
+    </script>
 
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@19.0.0",
+        "react-dom": "https://esm.sh/react-dom@19.0.0",
+        "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+        "react/jsx-runtime": "https://esm.sh/react@19.0.0/jsx-runtime"
+      }
+    }
+    </script>
 
     <script>
         window.onerror = function(msg, url, line) {
@@ -30,8 +41,7 @@
 <body>
     <div id="root">
         <div style="padding: 50px; text-align: center; color: #666;">
-            <p>应用正在加载...</p>
-            <p style="font-size: 12px; margin-top: 10px;">如果长时间没反应，请检查 assets 文件夹文件是否完整</p>
+            <p>应用启动中...</p>
         </div>
     </div>
 </body>
