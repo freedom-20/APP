@@ -7,15 +7,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <script>
-        // 创建一个假的环境变量对象
+        // 伪装一个假的 API Key 骗过代码检查
         window.process = { 
             env: { 
-                VITE_API_KEY: "fake_key_for_loading",
-                NEXT_PUBLIC_GEMINI_API_KEY: "fake_key_for_loading"
+                VITE_API_KEY: "dummy_key",
+                NEXT_PUBLIC_GEMINI_API_KEY: "dummy_key"
             } 
         };
-        // 伪装全局变量
-        window.apiKey = "fake_key_for_loading";
+        // 这种方式能对付大多数从 Google AI Studio 生成的代码
+        window.apiKey = "dummy_key";
     </script>
 
     <script type="importmap">
@@ -30,6 +30,7 @@
     </script>
 
     <script>
+        // 报错监控弹窗
         window.onerror = function(msg, url, line) {
             alert("发现错误: " + msg + "\n文件: " + url);
         };
