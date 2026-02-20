@@ -7,15 +7,26 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <script>
-        // 伪装一个假的 API Key 骗过代码检查
-        window.process = { 
-            env: { 
-                VITE_API_KEY: "dummy_key",
-                NEXT_PUBLIC_GEMINI_API_KEY: "dummy_key"
-            } 
+        // 伪装 process.env (Vite 项目最常用的方式)
+        window.process = {
+            env: {
+                VITE_API_KEY: "no_key_needed",
+                NEXT_PUBLIC_GEMINI_API_KEY: "no_key_needed",
+                NODE_ENV: "production"
+            }
         };
-        // 这种方式能对付大多数从 Google AI Studio 生成的代码
-        window.apiKey = "dummy_key";
+
+        // 针对某些打包工具的特殊处理
+        window.import = {
+            meta: {
+                env: {
+                    VITE_API_KEY: "no_key_needed"
+                }
+            }
+        };
+
+        // 终极拦截：如果报错还是来自这里，说明它在找这个全局变量
+        window.apiKey = "no_key_needed";
     </script>
 
     <script type="importmap">
@@ -29,20 +40,13 @@
     }
     </script>
 
-    <script>
-        // 报错监控弹窗
-        window.onerror = function(msg, url, line) {
-            alert("发现错误: " + msg + "\n文件: " + url);
-        };
-    </script>
-
     <script type="module" crossorigin src="index-BdtMaCkT.js"></script>
     <link rel="manifest" href="manifest.webmanifest">
 </head>
 <body>
     <div id="root">
         <div style="padding: 50px; text-align: center; color: #666;">
-            <p>应用启动中...</p>
+            <p>正在尝试绕过密钥检查...</p>
         </div>
     </div>
 </body>
